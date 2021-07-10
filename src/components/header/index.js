@@ -1,9 +1,12 @@
 import React from 'react'
+// import SearchBar from '../SearchBar/index';
+// import { useHomeFetch } from '../../hooks/useHomeFetch';
 
 const Header = () => {
+    // const { state, loading , error, setSearchTerm} = useHomeFetch()
     return (
 
-        <nav className="navbar navbar-expand-lg navbar-light bg-light">
+        <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
             <div className="container-fluid">
                 <a className="navbar-brand" href="#">Navbar</a>
                 <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -24,6 +27,7 @@ const Header = () => {
                             <a className="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
                         </li>
                     </ul>
+                  
                 </div>
             </div>
         </nav>
