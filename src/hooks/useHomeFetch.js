@@ -1,6 +1,6 @@
 import  {useState,useEffect,useRef} from 'react';
 import API from '../API';
-
+import { isPersistentState } from '../helpers';
 const initialState = {
     page: 0,
     results:[],
@@ -35,18 +35,37 @@ export const useHomeFetch = () => {
         setLoading(false);
     }
 
-    console.log(state)
+    console.log(state) 
+
+    //Serach
     useEffect(() =>{
+        if(!searchTerm){
+            const sessionState = isPersistentState('homeState');
+            if (sessionState){
+                console.log("grap from seesion")
+                setState(sessionState)
+                return
+            }
+        }
+        console.log("grap from api")
         setState(initialState)
         fetchMovies(1,searchTerm)
     },[searchTerm])
 
+    // paging
     useEffect(() =>{
         if(!isLoadingMore) return ;
         fetchMovies(state.page + 1,searchTerm)
         setIsLoadingMore(false)
 
     },[isLoadingMore,searchTerm, state.page])
+
+
+    // Write sessionState
+
+    useEffect(() =>{
+        if (!searchTerm) sessionStorage.setItem('homeState', JSON.stringify(state))
+    },[searchTerm,state])
 
     return { 
         state, 

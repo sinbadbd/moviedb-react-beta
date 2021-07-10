@@ -21,8 +21,9 @@ const Home = () => {
         setIsLoadingMore
     } = useHomeFetch()
 
-    // console.log(state)
-    if (error) return;
+    if(loading) return <Spiner/>;
+
+    if (error) return <>Something went wrong</>;
 
     return (
         <>
@@ -42,13 +43,15 @@ const Home = () => {
                { state.results.map(movie => (
                    
                    <div className="col-lg-2 col-6 mb-3" key={movie.id}>
-                       <Thumb 
-                            key={movie.id} 
-                            clickble
-                            image= {movie.poster_path ? IMAGE_BASE_URL + POSTER_SIZE + movie.poster_path : "no image"}
-                            movieId = {movie.id} 
-                        />
-                       <p className="mt-1">{movie.title}</p>
+                       <div className="shadow-sm">
+                            <Thumb 
+                                    key={movie.id} 
+                                    clickble
+                                    image= {movie.poster_path ? IMAGE_BASE_URL + POSTER_SIZE + movie.poster_path : "no image"}
+                                    movieId = {movie.id} 
+                                />
+                            <p className="mt-1">{movie.title}</p>
+                       </div>
                     </div>
                  ))
                 }

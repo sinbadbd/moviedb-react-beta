@@ -1,5 +1,6 @@
 import React, { useRef } from 'react';
 import { Link } from 'react-router-dom';
+import PropTypes from 'prop-types';
 
 const Thumb = ( { image, movieId, clickble}) => {
     return ( 
@@ -14,6 +15,12 @@ const Thumb = ( { image, movieId, clickble}) => {
             
         </>
     )
+}
+
+Thumb.prototype = {
+    image: PropTypes.string,
+    movieId: PropTypes.integer,
+    clickble: PropTypes.bool
 }
 
 export default Thumb;
