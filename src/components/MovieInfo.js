@@ -2,7 +2,7 @@ import React from 'react'
 import Thumb from './Thumb/index';
 import ProgressBar from '../Utils/ProgressBar';
 
-import { POSTER_SIZE,IMAGE_BASE_URL, BACKDROP_SIZE} from '../Config';
+import { POSTER_SIZE,IMAGE_BASE_URL} from '../Config';
 
 const MovieInfo = ({movie}) => {
     // const backgroundImg = movie.poster_path ? `${IMAGE_BASE_URL}${POSTER_SIZE}${movie.poster_path}`;
@@ -25,9 +25,8 @@ const MovieInfo = ({movie}) => {
                 <div className="col-lg-9 text-white">
                        <h2 className="">{movie.original_title}</h2>
 
-                        { 
-                            movie.genres.map(genre => (
-                                <span> &#8226; { genre.name } </span>
+                        { movie.genres.map(genre => (
+                                <span key={genre.id}> &#8226; { genre.name } </span>
                             ))
                         }
 

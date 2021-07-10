@@ -23,18 +23,21 @@ function Movie() {
         <div>
             <Breadcumb movieTitle={movie.original_title} />
             <MovieInfo movie={movie}/>
+            
             <div className="row"> 
-                {
-                    movie.actors.map(actor => (
+                {movie.actors.map(actor => (
                         <div key={actor.credit_id} className="col-lg-1 col-2">
                             <Actor 
-                        imageURL={actor.profile_path ? `${IMAGE_BASE_URL}${POSTER_SIZE}${actor.profile_path}` : 'no image'}
-                        name={actor.name}
-                        charecter={actor.character}
+                                imageURL={
+                                    actor.profile_path ? 
+                                    `${IMAGE_BASE_URL}${POSTER_SIZE}${actor.profile_path}` 
+                                    : 'no image'
+                                }
+                                name={actor.name}
+                                charecter={actor.character}
                         />
                         </div>
-                    ))
-                }
+                    ))}
             </div>
         </div>
     )
