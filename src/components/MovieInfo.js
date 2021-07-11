@@ -24,7 +24,7 @@ const MovieInfo = ({movie}) => {
                 </div>
                 <div className="col-lg-9 text-white">
                        <h2 className="">{movie.original_title}</h2>
-
+                        <span className="">{movie.release_date} </span>
                         { movie.genres.map(genre => (
                                 <span key={genre.id}> &#8226; { genre.name } </span>
                             ))

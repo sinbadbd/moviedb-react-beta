@@ -6,7 +6,7 @@ const Thumb = ( { image, movieId, clickble}) => {
     return ( 
         <>
            {clickble ? (
-               <Link to={`/${movieId}`}>
+               <Link to={`/movie/${movieId}`}>
                  <img className="img-fluid rounded" src={image}></img>
                </Link>
            ) : (

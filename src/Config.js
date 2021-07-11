@@ -5,6 +5,12 @@ const API_KEY = 'de05a59a85ef1e7797de8d4a6d343d0e'//process.env.APP_API_KEY
 const SEARCH_BASE_URL = `${API_URL}search/movie?api_key=${API_KEY}&language=en-US&query=`;
 const POPULAR_BASE_URL = `${API_URL}movie/popular?api_key=${API_KEY}`
 
+
+//ACTOR
+//https://api.themoviedb.org/3/person/73457?api_key=de05a59a85ef1e7797de8d4a6d343d0e&language=en-US
+
+
+
 // 
 const REQUEST_TOKEN_URL = `${API_URL}`
 const LOGIN_URL = `${API_URL}`
