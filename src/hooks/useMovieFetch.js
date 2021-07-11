@@ -2,9 +2,16 @@ import { useState, useEffect } from 'react'
 import { isPersistentState } from '../helpers';
 
 import API from '../API';
+const initialState = {
+
+    keywords: [],
+    vedioResult: [],
+    imageBackdrops:[]
+}
+
 
 export const useMovieFetch = movieId => {
-    const [state, setState] = useState({})
+    const [state, setState] = useState(initialState)
     const [loading, setLoading] = useState(true)
     const [error, setError] = useState(false)
 
@@ -15,8 +22,13 @@ export const useMovieFetch = movieId => {
             setError(false)
 
             const movie = await API.fetchMovie(movieId)
-            const credits =  await API.fetchCredits(movieId)
+            const credits = await API.fetchCredits(movieId)
 
+            const keyword = await API.fetchKeywords(movieId)
+            const veios = await API.fetchVideos(movieId)
+            const images = await API.fetchImages(movieId)
+
+            
             // director only 
 
             const directors = credits.crew.filter(
@@ -24,15 +36,18 @@ export const useMovieFetch = movieId => {
             )
 
 
-            setState( {
+            setState({
                 ...movie,
                 actors: credits.cast,
-                directors
+                directors,
+                keywords: keyword.keywords,
+                vedioResult: veios.results,
+                imageBackdrops: images.backdrops
             })
 
             setLoading(false)
 
-        }catch (error) {
+        } catch (error) {
             setError(true)
         }
 
@@ -40,10 +55,10 @@ export const useMovieFetch = movieId => {
     }
 
 
-    useEffect(() =>{
+    useEffect(() => {
 
-        const sessionState = isPersistentState(movieId); 
-        if (sessionState){
+        const sessionState = isPersistentState(movieId);
+        if (sessionState) {
             console.log("grap from seesion")
             setState(sessionState);
             setLoading(false);
@@ -51,12 +66,12 @@ export const useMovieFetch = movieId => {
         }
         fetchMovie()
 
-    },[ movieId ])
+    }, [movieId])
 
     //write
-    useEffect(() =>{
+    useEffect(() => {
         sessionStorage.setItem(movieId, JSON.stringify(state))
-    },[ movieId , state])
+    }, [movieId, state])
 
-    return {state,loading,error}
+    return { state, loading, error }
 }

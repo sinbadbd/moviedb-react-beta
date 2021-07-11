@@ -55,9 +55,12 @@ const ActorProfile = () => {
 
 
     useEffect(() => {
-        setModal(
-            new Modal(actorImageModal.current)
-        )
+        
+        setTimeout(()=>{
+            setModal(
+                new Modal(actorImageModal.current)
+            )
+          }, 2000)
     }, [])
 
 

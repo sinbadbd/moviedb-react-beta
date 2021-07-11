@@ -11,7 +11,7 @@ import Home from './components/Home';
 import Movie from './components/Movie';
 import ActorProfile from './components/Actor-Profile/index'
 import NotFound from './components/NotFound';
-
+import Footer from './Footer';
 
 const App = () => {
   return (
@@ -23,7 +23,8 @@ const App = () => {
           <Route path='/movie/:movieId' element={ <Movie /> } />
           <Route path='/actor/:actorId' element={ <ActorProfile /> } />
           <Route path='/*' element={ <NotFound />} />
-        </Routes>  
+        </Routes> 
+        <Footer /> 
      </Router>
   );
 }

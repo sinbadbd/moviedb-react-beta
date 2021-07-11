@@ -31,6 +31,22 @@ import {
       return await (await fetch(creditsEndpoint)).json();
     },
 
+    fetchKeywords: async movieId => {
+      const creditsEndpoint = `${API_URL}movie/${movieId}/keywords?api_key=${API_KEY}`;
+      return await (await fetch(creditsEndpoint)).json();
+    },
+    fetchVideos: async movieId => {
+      const creditsEndpoint = `${API_URL}movie/${movieId}/videos?api_key=${API_KEY}`;
+      return await (await fetch(creditsEndpoint)).json();
+    },
+    fetchImages: async movieId => {
+      const creditsEndpoint = `${API_URL}movie/${movieId}/images?api_key=${API_KEY}`;
+      return await (await fetch(creditsEndpoint)).json();
+    },
+
+    //videos
+    //images
+
     // MOVIE ACTOR: PERSON ALL API CALL
     fetchPerson: async personId => {
       const personEndpoint = `${API_URL}person/${personId}?api_key=${API_KEY}`
