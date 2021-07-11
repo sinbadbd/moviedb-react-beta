@@ -30,10 +30,59 @@ import {
       const creditsEndpoint = `${API_URL}movie/${movieId}/credits?api_key=${API_KEY}`;
       return await (await fetch(creditsEndpoint)).json();
     },
+
+    // MOVIE ACTOR: PERSON ALL API CALL
     fetchPerson: async personId => {
       const personEndpoint = `${API_URL}person/${personId}?api_key=${API_KEY}`
       return await (await fetch(personEndpoint)).json();
     },
+    fetchPersonImage: async personId => {
+      const personEndpoint = `${API_URL}person/${personId}/images?api_key=${API_KEY}`
+      return await (await fetch(personEndpoint)).json();
+    },
+    fetchPersonchanges: async personId => {
+      const personEndpoint = `${API_URL}person/${personId}/changes?api_key=${API_KEY}`
+      return await (await fetch(personEndpoint)).json();
+    },
+    fetchPersonmovieCredits: async personId => {
+      const personEndpoint = `${API_URL}person/${personId}/movie_credits?api_key=${API_KEY}`
+      return await (await fetch(personEndpoint)).json();
+    },
+    fetchPersontvCredits: async personId => {
+      const personEndpoint = `${API_URL}person/${personId}/tv_credits?api_key=${API_KEY}`
+      return await (await fetch(personEndpoint)).json();
+    },
+    fetchPersoncombinedCredits: async personId => {
+      const personEndpoint = `${API_URL}person/${personId}/combined_credits?api_key=${API_KEY}`
+      return await (await fetch(personEndpoint)).json();
+    },
+    fetchPersonexternalIds: async personId => {
+      const personEndpoint = `${API_URL}person/${personId}/external_ids?api_key=${API_KEY}`
+      return await (await fetch(personEndpoint)).json();
+    },
+    fetchPersontaggedImages: async personId => {
+      const personEndpoint = `${API_URL}person/${personId}/tagged_images?api_key=${API_KEY}`
+      return await (await fetch(personEndpoint)).json();
+    },
+    fetchPersonTranslations: async personId => {
+      const personEndpoint = `${API_URL}person/${personId}/translations?api_key=${API_KEY}`
+      return await (await fetch(personEndpoint)).json();
+    },
+
+    fetchPersonLatest: async personId => {
+      const personEndpoint = `${API_URL}person/${personId}/latest?api_key=${API_KEY}`
+      return await (await fetch(personEndpoint)).json();
+    },
+
+    fetchPersonPopular: async personId => {
+      const personEndpoint = `${API_URL}person/${personId}/popular?api_key=${API_KEY}`
+      return await (await fetch(personEndpoint)).json();
+    },
+
+    
+
+
+    
     // Bonus material below for login
     getRequestToken: async () => {
       const reqToken = await (await fetch(REQUEST_TOKEN_URL)).json();

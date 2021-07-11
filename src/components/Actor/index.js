@@ -22,7 +22,8 @@ const Actor = ({actorId,name, charecter, imageURL, isClickable}) => {
 Actor.prototype = {
     name : PropTypes.string,
     charecter : PropTypes.string,
-    imageURL : PropTypes.string
+    imageURL : PropTypes.string,
+    isClickable: PropTypes.bool
 }
 
 export default Actor

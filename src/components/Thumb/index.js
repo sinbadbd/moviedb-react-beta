@@ -2,7 +2,7 @@ import React, { useRef } from 'react';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
-const Thumb = ( { image, movieId, clickble}) => {
+const Thumb = ( { image, movieId, clickble,isShowPopup}) => {
     return ( 
         <>
            {clickble ? (
@@ -11,7 +11,9 @@ const Thumb = ( { image, movieId, clickble}) => {
                </Link>
            ) : (
                 <img className="img-fluid rounded" src={image}></img>
-           )}
+           )
+            
+           }
             
         </>
     )

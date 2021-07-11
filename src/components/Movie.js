@@ -3,7 +3,7 @@ import { useParams } from "react-router-dom";
 import Slider from "react-slick";
 
 import { useMovieFetch } from "../hooks/useMovieFetch";
-import { POSTER_SIZE, IMAGE_BASE_URL, BACKDROP_SIZE } from "../Config";
+import { POSTER_SIZE, IMAGE_BASE_URL } from "../Config";
 
 import Breadcumb from "./Breadcumb/index";
 import Spiner from "./Spiner";

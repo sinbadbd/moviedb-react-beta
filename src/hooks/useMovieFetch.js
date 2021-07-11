@@ -44,6 +44,7 @@ export const useMovieFetch = movieId => {
 
         const sessionState = isPersistentState(movieId); 
         if (sessionState){
+            console.log("grap from seesion")
             setState(sessionState);
             setLoading(false);
             return;
