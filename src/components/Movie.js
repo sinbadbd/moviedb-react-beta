@@ -72,11 +72,12 @@ function Movie() {
 
 
                         <div className="media-section">
+                            <h4>Media</h4>
                             <Tabs defaultActiveKey="Vedio" id="uncontrolled-tab-example" className="mb-3">
                                 <Tab eventKey="Vedio" title={`Vedio ${movie.vedioResult.length}`}>
                                     <div className="row">
                                         {movie.vedioResult.map(vedio => (
-                                            <div className="col-3">
+                                            <div className="col-3 mb-2">
                                                 <div className="h-25" key={vedio.id}>
                                                     <div>
                                                         <LiteYouTubeEmbed
@@ -93,7 +94,7 @@ function Movie() {
                                 <Tab eventKey="backdrops" title="Backdrops">
                                     <div className="row">
                                         {movie.imageBackdrops.map(image => (
-                                            <div className="col-3">
+                                            <div className="col-3 mb-2">
                                                 <div className="h-25" key={image.id}>
                                                     <div>
                                                         <img class="img-fluid" src={`${IMAGE_BASE_URL}${POSTER_SIZE}${image.file_path}`}></img>
