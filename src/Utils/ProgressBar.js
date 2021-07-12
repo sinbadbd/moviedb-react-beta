@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
- const ProgressBar = ({ strokeWidth, percentage }) => {
+ const ProgressBar = ({ strokeWidth, percentage,width,height }) => {
 	const radius = (50 - strokeWidth / 2);
     const pathDescription = `
       M 50,50 m 0,-${radius}
@@ -21,8 +21,8 @@ import PropTypes from 'prop-types';
       <svg
         className={'CircularProgressbar'}
         viewBox="0 0 100 100"
-				width={50}
-				height={50}
+				width={width}
+				height={height}
       >
         <path
           className="CircularProgressbar-trail"
@@ -47,7 +47,7 @@ import PropTypes from 'prop-types';
           x={50}
           y={50}
 					style={{
-						fill: '#007dbc',
+						fill: '#fff',
   					fontSize: '24px',
   					dominantBaseline: 'central',
   					textAnchor: 'middle',

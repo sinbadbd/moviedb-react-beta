@@ -1,7 +1,8 @@
 import React from "react";
 import { useParams } from "react-router-dom";
 import Slider from "react-slick";
-
+import LiteYouTubeEmbed from 'react-lite-youtube-embed';
+import 'react-lite-youtube-embed/dist/LiteYouTubeEmbed.css'
 import { useMovieFetch } from "../hooks/useMovieFetch";
 import { POSTER_SIZE, IMAGE_BASE_URL } from "../Config";
 
@@ -13,10 +14,8 @@ import RightSideBarInfo from "./Sidebar/index";
 // import convertMoney from '../helpers'
 
 import { Tabs, Tab } from "react-bootstrap";
-import LiteYouTubeEmbed from 'react-lite-youtube-embed';
-import 'react-lite-youtube-embed/dist/LiteYouTubeEmbed.css'
 
-
+import NotFoundImage from '../Utils/NotFoundImage';
 
 const settings = {
     autoplay: true,
@@ -28,11 +27,14 @@ const settings = {
     swipeToSlide: true,
     afterChange: function (index) {
         console.log(
-            `Slider Changed to: ${index + 1}, background: #222; color: #bada55`
+            //`Slider Changed to: ${index + 1}, background: #222; color: #bada55`
         );
     },
 };
 
+const showModal = () => {
+    console.log('press youtube')
+}
 function Movie() {
     const { movieId } = useParams();
     const { state: movie, loading, error } = useMovieFetch(movieId);
@@ -59,7 +61,7 @@ function Movie() {
                                         imageURL={
                                             actor.profile_path
                                                 ? `${IMAGE_BASE_URL}${POSTER_SIZE}${actor.profile_path}`
-                                                : "no image"
+                                                : <NotFoundImage />
                                         }
                                         isClickable={true}
                                         actorId={actor.id}
@@ -83,12 +85,12 @@ function Movie() {
                                                         <LiteYouTubeEmbed
                                                             id={vedio.key}
                                                             title={vedio.name}
+                                                            onClick={() => showModal()}
                                                         />
                                                     </div>
                                                 </div>
                                             </div>
                                         ))}
-
                                     </div>
                                 </Tab>
                                 <Tab eventKey="backdrops" title="Backdrops">
@@ -97,31 +99,41 @@ function Movie() {
                                             <div className="col-3 mb-2">
                                                 <div className="h-25" key={image.id}>
                                                     <div>
-                                                        <img class="img-fluid" src={`${IMAGE_BASE_URL}${POSTER_SIZE}${image.file_path}`}></img>
+                                                        <img class="img-fluid"
+                                                            src={`${IMAGE_BASE_URL}${POSTER_SIZE}${image.file_path}`}>
+                                                        </img>
                                                     </div>
                                                 </div>
                                             </div>
                                         ))}
-
                                     </div>
                                 </Tab>
                             </Tabs>
                         </div>
-
                     </div>
-                    <div className="col-3 shadow-sm  bg-body rounded">
+                    <div className="col-3 shadow-sm  bg-body rounded mb-3">
                         <RightSideBarInfo
+                            website={movie.homepage}
                             movieStatus={movie.status}
                             revenue={movie.revenue}
                             voteCount={movie.vote_count}
-                        />
+                            Budget={movie.budget}
+                            // 
+                        /> 
 
-                        <h4>Keywords</h4>
-                        <div className="">
+                        {
+                            movie.production_countries.map(con => (
+                                <>
+                                <b className="d-block">Language</b> 
+                                {con.name}</>
+                            ))
+                        }
+                        
+                        
+                        <div className="mt-3">
+                            <h4>Keywords</h4>
                             {movie.keywords.map(keyword => (
-                                // <button className="btn btn-default p-1">{keyword.name}</button>
                                 <button key={keyword.id} type="button" className="btn btn-secondary btn-sm m-1">{keyword.name}</button>
-
                             ))}
                         </div>
                     </div>

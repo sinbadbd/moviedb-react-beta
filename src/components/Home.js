@@ -9,7 +9,7 @@ import Thumb from './Thumb/index';
 import SearchBar from './SearchBar/index';
 import Button from './Button/index';
 import Spiner from './Spiner/index';
-
+import ProgressBar from '../Utils/ProgressBar';
 const Home = () => {
 
     const { 
@@ -25,7 +25,7 @@ const Home = () => {
 
     if (error) return <>Something went wrong</>;
 
-    return (
+     return (
         <>
             <SearchBar setSearchTerm={setSearchTerm}/>
             { 
@@ -42,8 +42,8 @@ const Home = () => {
            <Gride header={searchTerm ? 'Search Movies' : 'Popluar Movies'}>
                { state.results.map(movie => (
                    
-                   <div className="col-lg-2 col-6 mb-3" key={movie.id}>
-                       <div className="shadow-sm">
+                   <div className="col-lg-2 col-6 mb-4 d-flex align-content-stretch flex-wrap" key={movie.id}>
+                       <div className="shadow-sm position-relative">
                             <Thumb 
                                     key={movie.id} 
                                     clickble
@@ -51,6 +51,14 @@ const Home = () => {
                                     movieId = {movie.id} 
                                 />
                             <p className="mt-1">{movie.title}</p>
+                            <div className="position-absolute progressbarBg homepage-circle">
+                                <ProgressBar 
+                                    strokeWidth={10}
+                                    percentage={movie.vote_average * 10}
+                                    width={30}
+                                    height={30} 
+                                />
+                            </div>
                        </div>
                     </div>
                  ))

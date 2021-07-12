@@ -24,10 +24,19 @@
  
   .progressbarBg{
       background:black;
+
       width: 60px;
       height:60px;
+ 
       border-radius:50%;
       padding: 5px;
+
+      &.homepage-circle{
+        top: -10px;
+        left:5px;
+        width: 40px;
+        height:40px;
+      }
   }
 
   .circleButton{
@@ -182,6 +191,11 @@
   }
 }
 
-// .footer {
-//   height:100px;
-// }
+.footer {
+  // height:100px;
+  // position: fixed;
+  // margin-top:100px;
+  // bottom: 0;
+  // left: 0;
+  // right: 0;
+}
