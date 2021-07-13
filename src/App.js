@@ -15,6 +15,7 @@ import Footer from './Footer';
 import UpComming from './components/Movie/UpComming';
 import TopRated from './components/Movie/TopRated';
 import NowPlaing from './components/Movie/NowPlaing';
+import KeywordMovie from './components/KeywordMovie/KeywordMovie';
 
 const App = () => {
   return (
@@ -28,6 +29,7 @@ const App = () => {
           <Route path='/upcomming' element={ <UpComming/>} />
           <Route path='/toprated' element={ <TopRated /> } />
           <Route path='/nowplay' element={ <NowPlaing /> } />
+          <Route path='/keyword/:keywordId/:name' element={ <KeywordMovie />} />
           <Route path='/*' element={ <NotFound />} />
         </Routes> 
         <Footer /> 

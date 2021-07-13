@@ -17,6 +17,8 @@ import { Tabs, Tab } from "react-bootstrap";
 
 // import NotFoundImage from '../Utils/NotFoundImage';
 import placeholder from '../images/placeholder.png';
+import KeywordButton from "../components/Keyword/KeywordButton";
+
 const settings = {
     autoplay: true,
     dots: false,
@@ -119,23 +121,32 @@ function Movie() {
                             revenue={movie.revenue}
                             voteCount={movie.vote_count}
                             Budget={movie.budget}
-                            // 
-                        /> 
+                        // 
+                        />
 
                         {
                             movie.production_countries.map(con => (
                                 <>
-                                <b className="d-block">Language</b> 
-                                {con.name}</>
+                                    <b className="d-block">Language</b>
+                                    {con.name}
+                                </>
                             ))
                         }
-                        
-                        
+
+
                         <div className="mt-3">
                             <h4>Keywords</h4>
-                            {movie.keywords.map(keyword => (
-                                <button key={keyword.id} type="button" className="btn btn-secondary btn-sm m-1">{keyword.name}</button>
-                            ))}
+                            <div className="row">
+                                {movie.keywords.map(keyword => (
+                                    <KeywordButton 
+                                        
+                                        id={keyword.id}
+                                        name={keyword.name.split(' ').join('-')}
+                                        clickble={true}
+
+                                    />
+                                ))}
+                            </div>
                         </div>
                     </div>
                 </div>
