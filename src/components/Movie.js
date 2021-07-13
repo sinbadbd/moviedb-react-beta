@@ -17,6 +17,8 @@ import { Tabs, Tab } from "react-bootstrap";
 
 // import NotFoundImage from '../Utils/NotFoundImage';
 import placeholder from '../images/placeholder.png';
+import KeywordButton from "../components/Keyword/KeywordButton";
+
 const settings = {
     autoplay: true,
     dots: false,
@@ -25,6 +27,20 @@ const settings = {
     centerPadding: "160px",
     slidesToShow: 7,
     swipeToSlide: true,
+    responsive: [
+        {
+          breakpoint: 320,
+          settings: { slidesToShow: 1, slidesToScroll: 1, infinite: false }
+        },
+        {
+          breakpoint: 768,
+          settings: { slidesToShow: 2, slidesToScroll: 2, infinite: false }
+        },
+        {
+          breakpoint: 1024,
+          settings: { slidesToShow: 3, slidesToScroll: 3, infinite: false }
+        }
+      ],
     afterChange: function (index) {
         console.log(
             //`Slider Changed to: ${index + 1}, background: #222; color: #bada55`
@@ -53,7 +69,7 @@ function Movie() {
             <div className="container-fluid">
                 <div className="row">
                     <h3 className="mt-4 mb-2">Cast</h3>
-                    <div className="col-9">
+                    <div className="col-lg-9">
                         <Slider {...settings}>
                             {movie.actors.map((actor) => (
                                 <div key={actor.credit_id} className="px-2">
@@ -112,30 +128,39 @@ function Movie() {
                             </Tabs>
                         </div>
                     </div>
-                    <div className="col-3 shadow-sm  bg-body rounded mb-3">
+                    <div className="col-lg-3 shadow-sm  bg-body rounded mb-3">
                         <RightSideBarInfo
                             website={movie.homepage}
                             movieStatus={movie.status}
                             revenue={movie.revenue}
                             voteCount={movie.vote_count}
                             Budget={movie.budget}
-                            // 
-                        /> 
+                        // 
+                        />
 
                         {
                             movie.production_countries.map(con => (
                                 <>
-                                <b className="d-block">Language</b> 
-                                {con.name}</>
+                                    <b className="d-block">Language</b>
+                                    {con.name}
+                                </>
                             ))
                         }
-                        
-                        
+
+
                         <div className="mt-3">
                             <h4>Keywords</h4>
-                            {movie.keywords.map(keyword => (
-                                <button key={keyword.id} type="button" className="btn btn-secondary btn-sm m-1">{keyword.name}</button>
-                            ))}
+                            <div className="row">
+                                {movie.keywords.map(keyword => (
+                                    <KeywordButton 
+                                        
+                                        id={keyword.id}
+                                        name={keyword.name.split(' ').join('-')}
+                                        clickble={true}
+
+                                    />
+                                ))}
+                            </div>
                         </div>
                     </div>
                 </div>
