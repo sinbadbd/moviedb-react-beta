@@ -1,10 +1,11 @@
 
 const API_URL = 'https://api.themoviedb.org/3/';
 const API_KEY = 'de05a59a85ef1e7797de8d4a6d343d0e'//process.env.APP_API_KEY
+// const movieTpe = ""
 
 const SEARCH_BASE_URL = `${API_URL}search/movie?api_key=${API_KEY}&language=en-US&query=`;
 const POPULAR_BASE_URL = `${API_URL}movie/popular?api_key=${API_KEY}`
-
+const ALL_MOVIES_BASE_URL = `${API_URL}movie/now_playing?api_key=${API_KEY}`
 
 //ACTOR
 //https://api.themoviedb.org/3/person/73457?api_key=de05a59a85ef1e7797de8d4a6d343d0e&language=en-US
@@ -35,5 +36,6 @@ export{
     SESSION_ID_URL,
     IMAGE_BASE_URL,
     BACKDROP_SIZE,
-    POSTER_SIZE
+    POSTER_SIZE,
+    ALL_MOVIES_BASE_URL
 }

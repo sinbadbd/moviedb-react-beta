@@ -8,6 +8,8 @@ import Slider from "react-slick";
 import ModalCustom from '../../Utils/ModalCustom';
 import Actor from '../Actor/index'
 import { Link } from 'react-router-dom'
+import Thumb from '../Thumb';
+import placeholder from '../../images/placeholder.png';
 
 const imageSettings = {
     autoplay: false,
@@ -47,7 +49,7 @@ const ActorProfile = () => {
     const { state, isLoading, error } = usePersonFetch(actorId)
 
     console.log(actorId)
-    console.log("state-all-api",state)
+    console.log("state-all-api", state)
     console.log('state-profile', state.profiles)
 
     const [modal, setModal] = useState()
@@ -55,12 +57,12 @@ const ActorProfile = () => {
 
 
     useEffect(() => {
-        
-        setTimeout(()=>{
+
+        setTimeout(() => {
             setModal(
                 new Modal(actorImageModal.current)
             )
-          }, 2000)
+        }, 2000)
     }, [])
 
 
@@ -90,7 +92,7 @@ const ActorProfile = () => {
                                                 src={`${IMAGE_BASE_URL}${POSTER_SIZE}${profile.file_path}`}>
                                             </img>
                                         </div>
-                                    ))} 
+                                    ))}
                                 </Slider>
 
                                 <div>
@@ -99,21 +101,27 @@ const ActorProfile = () => {
                             </div>
                             <span className="text-right text-sm">Total:{state.profiles.length}</span>
                         </div>
-                        
+
                     </div>
                 </div>
             </div>
             <div className="container-fluid">
                 <div className="row">
                     <div className="col-2 ">
-                       <div className="container-image">
-                            <img className="img-fluid rounded mb-2 image"
-                                src={`${IMAGE_BASE_URL}${POSTER_SIZE}${state.profile_path}`}> 
-                            </img>
+                        <div className="container-image">
+                            {/* <img className="img-fluid rounded mb-2 image"
+                                src={`${IMAGE_BASE_URL}${POSTER_SIZE}${state.profile_path}`}>
+                            </img> */}
+                            <Thumb 
+                                image={
+                                    state.poster_path ? `${IMAGE_BASE_URL}${POSTER_SIZE}${state.poster_path}` : placeholder
+                                }
+                                clickble={false}
+                            />
                             <div className="middle">
                                 <div className="text" onClick={() => modal.show()}>View</div>
                             </div>
-                       </div>
+                        </div>
 
                         <h5> Personal Info  </h5>
 
@@ -156,17 +164,18 @@ const ActorProfile = () => {
                         <div className="row">
                             <h3>Movies</h3>
                             <Slider {...movieCastSettings}>
-                                    {state.MovieCast.map((movie) => (
-                                        <div className="col-2" key={movie.id}>
-                                            {/* <Link to={`${movie.id}`}> */}
-                                                <img className="img-fluid rounded mb-2 px-2"
-                                                    src={`${IMAGE_BASE_URL}${POSTER_SIZE}${movie.poster_path}`}>
-                                                </img>
-                                            {/* </Link> */}
-                                            
-                                            <p>{movie.original_title}</p>
+                                {state.MovieCast.map((movie) => (
+                                    <div className="col-2" key={movie.id}>
+                                        <div className="px-2">
+                                            <Thumb
+                                                 image= {movie.poster_path ? IMAGE_BASE_URL + POSTER_SIZE + movie.poster_path : placeholder}
+                                                movieId={movie.id}
+                                                clickble={true}
+                                            />
                                         </div>
-                                    ))} 
+                                        <p>{movie.original_title}</p>
+                                    </div>
+                                ))}
                             </Slider>
                         </div>
                     </div>

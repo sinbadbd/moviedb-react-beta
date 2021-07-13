@@ -15,8 +15,8 @@ import RightSideBarInfo from "./Sidebar/index";
 
 import { Tabs, Tab } from "react-bootstrap";
 
-import NotFoundImage from '../Utils/NotFoundImage';
-
+// import NotFoundImage from '../Utils/NotFoundImage';
+import placeholder from '../images/placeholder.png';
 const settings = {
     autoplay: true,
     dots: false,
@@ -61,7 +61,7 @@ function Movie() {
                                         imageURL={
                                             actor.profile_path
                                                 ? `${IMAGE_BASE_URL}${POSTER_SIZE}${actor.profile_path}`
-                                                : <NotFoundImage />
+                                                : placeholder
                                         }
                                         isClickable={true}
                                         actorId={actor.id}

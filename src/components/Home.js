@@ -10,6 +10,7 @@ import SearchBar from './SearchBar/index';
 import Button from './Button/index';
 import Spiner from './Spiner/index';
 import ProgressBar from '../Utils/ProgressBar';
+import placeholder from '../images/placeholder.png'
 const Home = () => {
 
     const { 
@@ -47,7 +48,7 @@ const Home = () => {
                             <Thumb 
                                     key={movie.id} 
                                     clickble
-                                    image= {movie.poster_path ? IMAGE_BASE_URL + POSTER_SIZE + movie.poster_path : "no image"}
+                                    image= {movie.poster_path ? IMAGE_BASE_URL + POSTER_SIZE + movie.poster_path : placeholder}
                                     movieId = {movie.id} 
                                 />
                             <p className="mt-1">{movie.title}</p>

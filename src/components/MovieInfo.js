@@ -3,7 +3,7 @@ import Thumb from './Thumb/index';
 import ProgressBar from '../Utils/ProgressBar';
 
 import { POSTER_SIZE,IMAGE_BASE_URL} from '../Config';
-
+import placeholder from '../images/placeholder.png';
 const MovieInfo = ({movie}) => {
     // const backgroundImg = movie.poster_path ? `${IMAGE_BASE_URL}${POSTER_SIZE}${movie.poster_path}`;
     const rating = movie.vote_average * 10
@@ -15,7 +15,7 @@ const MovieInfo = ({movie}) => {
                 <div className="col-lg-3">
                     <Thumb
                         image={
-                            movie.poster_path ? `${IMAGE_BASE_URL}${POSTER_SIZE}${movie.poster_path}` : 'no image'
+                            movie.poster_path ? `${IMAGE_BASE_URL}${POSTER_SIZE}${movie.poster_path}` : placeholder
                         }
                         clickble={false}
                         // movieId={movie.id}
