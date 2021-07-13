@@ -2,11 +2,11 @@ import React from 'react'
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 
-const Actor = ({actorId,name, charecter, imageURL, isClickable}) => {
+const Actor = ({actorId,urlParam,name, charecter, imageURL, isClickable}) => {
     return (
         <div>
             { isClickable ? (
-                <Link to={`/actor/${actorId}`}>
+                <Link to={`/actor/${actorId}/${urlParam}`}>
                     <img className="img-fluid rounded" src={imageURL} alt={name} />
                 </Link>
             ): (<img className="img-fluid rounded" src={imageURL} alt={name} />)

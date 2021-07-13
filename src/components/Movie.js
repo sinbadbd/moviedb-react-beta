@@ -66,6 +66,7 @@ function Movie() {
                                         isClickable={true}
                                         actorId={actor.id}
                                         name={actor.name}
+                                        urlParam={actor.name.split(' ').join('-')}
                                         charecter={actor.character}
                                     />
                                 </div>

@@ -5,35 +5,30 @@ import API from '../API';
 
 const initialState = {
     page: 0,
-    results:[],
+    results: [],
     total_pages: 0,
     total_results: 0
 }
 
-export const useFetchAllMovies =  typeMovies  => {
+export const useFetchAllMovies = typeMovies => {
     const [state, setState] = useState(initialState)
     const [loading, setLoading] = useState(true)
     const [error, setError] = useState(false)
     const [isLoadingMore, setIsLoadingMore] = useState(false);
-    const [movies, setMovies] = useState();
-    
+
     const fetchMovies = async (page) => {
 
         try {
             setLoading(true)
             setError(false)
 
-            const movies = await API.fetchAllTypeMovies(typeMovies,page)//await API.fetchAllMovies()
-
-            // setState({
-            //     results: nowPlayindMovie.results
-            // })
-
-            setState( prev => ({ 
+            const movies = await API.fetchAllTypeMovies(typeMovies, page)//await API.fetchAllMovies()
+ 
+            setState(prev => ({
                 ...movies,
-                results: 
+                results:
                     page > 1 ? [...prev.results, ...movies.results] : [...movies.results]
-             }))
+            }))
 
         } catch (error) {
             setError(true)
@@ -42,19 +37,33 @@ export const useFetchAllMovies =  typeMovies  => {
     }
 
     useEffect(() => {
+        const sessionState = isPersistentState(typeMovies);
+        if (sessionState) {
+            console.log("grap from seesion")
+            setState(sessionState);
+            setLoading(false);
+            return;
+        }
+
         fetchMovies()
     }, [])
 
 
     // paging
-    useEffect(() =>{
-        if(!isLoadingMore) return ;
+    useEffect(() => {
+        if (!isLoadingMore) return;
         fetchMovies(state.page + 1)
         setIsLoadingMore(false)
 
-    },[isLoadingMore, state.page])
+    }, [isLoadingMore, state.page])
+
+    // Write sessionState
+
+    useEffect(() => {
+        sessionStorage.setItem(typeMovies, JSON.stringify(state))
+    }, [typeMovies, state])
 
 
-    return { state, loading, error,setIsLoadingMore }
+    return { state, loading, error, setIsLoadingMore }
 
 }

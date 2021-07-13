@@ -171,6 +171,7 @@ const ActorProfile = () => {
                                             <Thumb
                                                 image={movie.poster_path ? IMAGE_BASE_URL + POSTER_SIZE + movie.poster_path : placeholder}
                                                 movieId={movie.id}
+                                                name = {movie.original_title.split(' ').join('-')}
                                                 clickble={true}
                                             />
                                         </div>

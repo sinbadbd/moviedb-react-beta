@@ -34,7 +34,8 @@ const TopRated = () => {
                                             key={movie.id}
                                             clickble
                                             image={movie.poster_path ? IMAGE_BASE_URL + POSTER_SIZE + movie.poster_path : placeholder}
-                                            movieId={movie.id}
+                                            movieId = {movie.id}
+                                            name = {movie.original_title.split(' ').join('-')}
                                         />
                                         <p className="mt-1">{movie.title}</p>
                                         <div className="position-absolute progressbarBg homepage-circle">

@@ -21,9 +21,9 @@ const Header = () => {
                                 Movie
                             </a>
                             <ul className="dropdown-menu" aria-labelledby="navbarScrollingDropdown">
+                                <Link to={'/nowplay'} className="dropdown-item">Now Playing</Link>
                                 <Link to={'/upcomming'} className="dropdown-item">Up Comming</Link>
                                 <Link to={'/toprated'} className="dropdown-item">Top Rated</Link>
-                                <Link to={'/nowplay'} className="dropdown-item">Now Playing</Link>
                             </ul>
                         </li>
                         <li className="nav-item">
