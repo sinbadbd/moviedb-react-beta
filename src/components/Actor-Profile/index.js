@@ -109,18 +109,19 @@ const ActorProfile = () => {
                 <div className="row">
                     <div className="col-2 ">
                         <div className="container-image">
-                            {/* <img className="img-fluid rounded mb-2 image"
+                            <img className="img-fluid rounded mb-2 image"
                                 src={`${IMAGE_BASE_URL}${POSTER_SIZE}${state.profile_path}`}>
-                            </img> */}
-                            <Thumb 
-                                image={
-                                    state.poster_path ? `${IMAGE_BASE_URL}${POSTER_SIZE}${state.poster_path}` : placeholder
-                                }
-                                clickble={false}
-                            />
-                            <div className="middle">
-                                <div className="text" onClick={() => modal.show()}>View</div>
-                            </div>
+                            </img>
+                            {/* <Thumb 
+                                image= {state.poster_path ? IMAGE_BASE_URL + POSTER_SIZE + state.poster_path : placeholder}
+                                clickble={false} */}
+                            {/* /> */}
+                            {
+                                state.profile_path ? (<div className="middle">
+                                    <div className="text" onClick={() => modal.show()}>View</div>
+                                </div>) : ''
+                            }
+
                         </div>
 
                         <h5> Personal Info  </h5>
@@ -168,7 +169,7 @@ const ActorProfile = () => {
                                     <div className="col-2" key={movie.id}>
                                         <div className="px-2">
                                             <Thumb
-                                                 image= {movie.poster_path ? IMAGE_BASE_URL + POSTER_SIZE + movie.poster_path : placeholder}
+                                                image={movie.poster_path ? IMAGE_BASE_URL + POSTER_SIZE + movie.poster_path : placeholder}
                                                 movieId={movie.id}
                                                 clickble={true}
                                             />

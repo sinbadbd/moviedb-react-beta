@@ -6,7 +6,9 @@ import {
     REQUEST_TOKEN_URL,
     LOGIN_URL,
     SESSION_ID_URL,
-    ALL_MOVIES_BASE_URL
+    ALL_MOVIES_BASE_URL,
+    getMovieURL
+    
   } from './Config';
   
   const defaultConfig = {
@@ -36,7 +38,10 @@ import {
     //   const endpoint = `${API_URL}movie/${movieId}?api_key=${API_KEY}`;
     //   return await (await fetch(endpoint)).json();
     // },
-    
+    fetchAllTypeMovies: async (type,page) => {
+      const endpoint = `${getMovieURL(type,page)}`
+      return await (await fetch(endpoint)).json();
+    },
 
     fetchCredits: async movieId => {
       const creditsEndpoint = `${API_URL}movie/${movieId}/credits?api_key=${API_KEY}`;

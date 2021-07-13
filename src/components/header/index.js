@@ -16,14 +16,14 @@ const Header = () => {
                 </button>
                 <div className="collapse navbar-collapse" id="navbarNav">
                     <ul className="navbar-nav">
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" id="navbarScrollingDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        <li className="nav-item dropdown">
+                            <a className="nav-link dropdown-toggle" href="#" id="navbarScrollingDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                 Movie
                             </a>
-                            <ul class="dropdown-menu" aria-labelledby="navbarScrollingDropdown">
-                                <Link to={'/upcomming'} class="dropdown-item">Up Comming</Link>
-                                <Link to={'/toprated'} class="dropdown-item">Top Rated</Link>
-                                <Link to={'/nowplay'} class="dropdown-item">Now Playing</Link>
+                            <ul className="dropdown-menu" aria-labelledby="navbarScrollingDropdown">
+                                <Link to={'/upcomming'} className="dropdown-item">Up Comming</Link>
+                                <Link to={'/toprated'} className="dropdown-item">Top Rated</Link>
+                                <Link to={'/nowplay'} className="dropdown-item">Now Playing</Link>
                             </ul>
                         </li>
                         <li className="nav-item">

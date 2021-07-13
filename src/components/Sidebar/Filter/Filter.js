@@ -2,7 +2,7 @@ import React from 'react'
 
 const Filter = () => {
     return (
-        <div className="col-lg-4">
+        <div className="col-lg-2">
             left filet
         </div>
     )
