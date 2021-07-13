@@ -10,7 +10,7 @@ import SearchBar from './SearchBar/index';
 import Button from './Button/index';
 import Spiner from './Spiner/index';
 import ProgressBar from '../Utils/ProgressBar';
-import placeholder from '../images/placeholder.png'
+import placeholder from '../images/placeholder.png' 
 const Home = () => {
 
     const { 
